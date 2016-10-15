@@ -38,13 +38,20 @@ public class AnagramDictionary {
             }
             else
             {
-                ArrayList<String> value=lettersToWord
+                ArrayList<String> value=lettersToWord.get(key);
+                value.add(word);
             }
         }
+        wordset=new HashSet(wordList);
     }
 
     public boolean isGoodWord(String word, String base) {
-        return true;
+        boolean b=true;
+        if(!wordset.contains(word))
+            b=false;
+        if(word.toLowerCase().contains(base.toLowerCase()))
+            b=false;
+        return b;
     }
 
     public ArrayList<String> getAnagrams(String targetWord) {
